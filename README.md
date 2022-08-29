@@ -54,8 +54,29 @@ console.log(123);
 
 ## Creating Modules
 
-```js
+- create generate-joke.js in src folder
+- add generateJoke() function in it and return some joke in string
 
+> <i>generate-joke.js</i>
+
+```js
+export default function generateJoke() {
+  return "The wedding was so beautiful. Even the cake was in tiers.";
+}
+```
+
+- in index.js import generateJoke and console log the function
+
+> <i>index.js</i>
+
+```js
+import generateJoke from "./generate-joke";
+console.log(generateJoke());
+```
+
+```bash
+# result in browser's console
+Uncaught SyntaxError: Cannot use import statement outside a module (at index.js:1:1)
 ```
 
 <br/>

@@ -83,8 +83,62 @@ Uncaught SyntaxError: Cannot use import statement outside a module (at index.js:
 
 ## Webpack Install & Building
 
-```js
+- npm init -y - initialize project without question section in terminal
 
+```bash
+npm init -y
+```
+
+- install webpack packages
+
+```bash
+npm i -D webpack webpack-cli
+```
+
+> <i>package.json</i>
+
+```json
+{
+  "scripts": {
+    "build": "webpack --mode production"
+  },
+  "devDependencies": {
+    "webpack": "^5.74.0",
+    "webpack-cli": "^4.10.0"
+  }
+}
+```
+
+- compile webpack for the first time
+
+```bash
+npm run build
+```
+
+- check dist folder and webpack create a new file called main.js
+
+> <i>main.js</i>
+
+```js
+//  webpack combine generateJoke() function and console.log() in index.js
+
+(() => {
+  "use strict";
+  console.log("The wedding was so beautiful. Even the cake was in tiers.");
+})();
+```
+
+- in index.html replace source script to "./main.js"
+
+> <i>index.html</i> <br/> \<script src="../src/index.js"></script> <br/> ↓ replace src value to main.js
+
+```html
+<script src="./main.js"></script>
+```
+
+```bash
+ # result in browser console
+ The wedding was so beautiful. Even the cake was in tiers.
 ```
 
 <br/>

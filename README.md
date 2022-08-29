@@ -14,8 +14,40 @@
 
 ## Initial Files (src/dist)
 
-```js
+- create folder dist & src on root
+- create index.html in dist folder
+- create index.js in src folder
 
+```bash
+_root
+├── dist
+│   └── index.html
+└── src
+    └── index.js
+```
+
+> <i>index.html</i>
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Webpack | Crash Course</title>
+  </head>
+  <body>
+    <h1>Webpack App</h1>
+    <script src="../src/index.js"></script>
+  </body>
+</html>
+```
+
+> <i>index.js</i>
+
+```js
+console.log(123);
 ```
 
 <br/>

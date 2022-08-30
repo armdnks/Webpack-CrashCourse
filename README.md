@@ -290,9 +290,61 @@ module.exports = {
 
 ## Loaders & Sass Compiling
 
-```js
+> Loaders - Webpack enables use of loaders to preprocess files. This allows you to bundle any static resource way beyond JavaScript. You can easily write your own loaders using Node.js. <br/> https://webpack.js.org/loaders/
 
+### Install Packages
+
+```bash
+npm i -D sass style-loader css-loader sass-loader
 ```
+
+### main.scss
+
+- create styles folder in src
+- add main.scss in it
+- copy and paste main.scss from repo
+  > https://github.com/bradtraversy/webpack-starter/blob/main/src/styles/main.scss
+
+```bash
+_root
+└── src
+    └── styles
+        └── main.scss
+```
+
+### Loader Config
+
+- set module config below output
+
+> <i>webpack.config.js</i>
+
+```js
+output: {
+  // ...
+},
+module: {
+  rules: [
+    {
+      test: /\.scss$/,
+      use: ["style-loader", "css-loader", "sass-loader"],
+    },
+  ],
+},
+```
+
+- import main.scss in src/index.js
+
+> <i>index.js</i>
+
+```js
+import "./styles/main.scss";
+```
+
+```bash
+npm run build
+```
+
+![](./_preview/06-loaders-result.jpg)
 
 <br/>
 

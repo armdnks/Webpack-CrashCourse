@@ -350,8 +350,46 @@ npm run build
 
 ## HTML Webpack Plugin
 
-```js
+> HtmlWebpackPlugin - The HtmlWebpackPlugin simplifies creation of HTML files to serve your webpack bundles. This is especially useful for webpack bundles that include a hash in the filename which changes every compilation. You can either let the plugin generate an HTML file for you, supply your own template using lodash templates, or use your own loader. <br/> https://webpack.js.org/plugins/html-webpack-plugin/
 
+### Install Package
+
+```bash
+npm i -D html-webpack-plugin
+```
+
+### Webpack Config
+
+> <i>webpack.config.js</i>
+
+```js
+plugins: [
+  new HtmlWebpackPlugin({
+    title: "Webpack App",
+    filename: "index.html",
+  }),
+],
+```
+
+- delete dist folder and npm run build to test
+
+```bash
+npm run build
+```
+
+> <i>index.html</i>
+
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Webpack App | Crash Course</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script defer src="bundle.js"></script>
+  </head>
+  <body></body>
+</html>
 ```
 
 <br/>

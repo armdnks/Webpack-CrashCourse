@@ -204,9 +204,87 @@ console.log(uuidv4());
 
 ## Webpack Config File
 
-```js
+### Webpack Mode
 
+- create webpack.config.js on root
+- set mode to development
+- remove '--mode' on build script in package.json
+
+> <i>webpack.config.js</i>
+
+```js
+module.exports = {
+  mode: "development",
+};
 ```
+
+> <i>package.json</i> <br/> "build": "webpack --mode production" <br/> ↓ remove --mode ...
+
+```json
+
+"build": "webpack"
+```
+
+### bundle.js
+
+- set entry file to index.js in src folder
+- target the outpur to dist named bundle.js
+
+```js
+const path = require("path");
+
+module.exports = {
+  mode: "development",
+  entry: path.resolve(__dirname, "src/index.js"),
+  output: {
+    path: path.resolve(__dirname, "dist"),
+    filename: "bundle.js",
+  },
+};
+```
+
+- remove main.js in dist folder
+- npm run build
+
+```bash
+npm run build
+```
+
+```bash
+_root
+└── dist
+    ├── bundle.js
+    └── index.html
+```
+
+- replace src='./main.js' to
+
+> <i>index.html</i> <br/> \<script src="./main.js">\</script> <br/> ↓ replace src to "./bundle.js"
+
+```html
+<script src="./bundle.js"></script>
+```
+
+### Multiple Entry Point
+
+- set multiple entry point with making 'entry' an object
+  > entry: { bundle: path.resolve(\_\_dirname, "src/index.js") },
+- output the filename based on entry object
+
+```js
+module.exports = {
+  mode: "development",
+  entry: {
+    bundle: path.resolve(__dirname, "src/index.js"),
+  },
+  output: {
+    path: path.resolve(__dirname, "dist"),
+    filename: "[name].js",
+  },
+};
+```
+
+> \[name\].js pass 'bundle' object in entry <br/> run npm build and get same result in dist folder
 
 <br/>
 

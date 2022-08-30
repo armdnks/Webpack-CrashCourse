@@ -22,6 +22,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: "Webpack App | Crash Course",
       filename: "index.html",
+      template: "src/template.html",
     }),
   ],
 };

@@ -365,7 +365,7 @@ npm i -D html-webpack-plugin
 ```js
 plugins: [
   new HtmlWebpackPlugin({
-    title: "Webpack App",
+    title: "Webpack App | Crash Course",
     filename: "index.html",
   }),
 ],
@@ -396,9 +396,71 @@ npm run build
 
 ## HTML Template
 
-```js
+- set template in HtmlWebpackPlugin
 
+> <i>webpack.config.js</i>
+
+```js
+plugins: [
+  new HtmlWebpackPlugin({
+    title: "Webpack App | Crash Course",
+    filename: "index.html",
+    template: "src/template.html",
+  }),
+],
 ```
+
+- create template.html file in src folder
+- output dynamic title with \<%= htmlWebpackPlugin.options.title \%>
+
+> <i>template.html</i>
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= htmlWebpackPlugin.options.title %></title>
+  </head>
+  <body>
+    <div class="container">
+      <h3>Don't Laugh Challenge</h3>
+      <div id="joke" class="joke"></div>
+      <button id="joke-btn" class="btn">Get Another Joke</button>
+    </div>
+  </body>
+</html>
+```
+
+```bash
+npm run build
+```
+
+> <i>index.html</i> <br/> result
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Webpack App | Crash Course</title>
+    <script defer src="bundle.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <h3>Don't Laugh Challenge</h3>
+      <div id="joke" class="joke"></div>
+      <button id="joke-btn" class="btn">Get Another Joke</button>
+    </div>
+  </body>
+</html>
+```
+
+![](./_preview/08-template-result.jpg)
 
 <br/>
 

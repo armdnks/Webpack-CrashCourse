@@ -499,9 +499,45 @@ _root
 
 ## Webpack Dev Server
 
-```js
+### Install Package
 
+```bash
+npm i -D webpack-dev-server
 ```
+
+> <i>package.json</i>
+
+```json
+"scripts": {
+  "build": "webpack",
+  "dev": "webpack serve"
+},
+```
+
+```bash
+npm run dev
+```
+
+> serve at http://localhost:8080
+
+### Webpack Dev Server Config
+
+> <i>webpack.config.js</i>
+
+```js
+devServer: {
+  static: {
+    directory: path.resolve(__dirname, "dist"),
+  },
+  port: 3000, // serve in port 3000
+  open: true, // open the browser after npm run dev automatically
+  hot: true, // hot reload
+  compress: true, // gzip compression
+  historyApiFallback: true,
+},
+```
+
+> serve at http://localhost:3000/ <br/> it runs through memory, which means if we don't have a dist folder it's still running
 
 <br/>
 

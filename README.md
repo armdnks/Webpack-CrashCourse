@@ -466,8 +466,33 @@ npm run build
 
 ## Caching & Hash Setup
 
-```js
+> instead of bundle.js, the result will be bundle205199ab45963f6a62ec.js
+> <br/> https://webpack.js.org/guides/caching/
 
+- add \[contenthash\] after \[name\]
+
+> <i>webpack.config.js</i>
+
+```js
+output: {
+  path: path.resolve(__dirname, "dist"),
+  filename: "[name][contenthash].js",
+},
+```
+
+- delete dist folder and npm run build
+
+```bash
+npm run build
+```
+
+- result "bundle7ed90794d364134cd184.js"
+
+```bash
+_root
+└── dist
+    ├── bundle7ed90794d364134cd184.js
+    └── index.html
 ```
 
 <br/>

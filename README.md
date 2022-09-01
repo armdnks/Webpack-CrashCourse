@@ -543,16 +543,31 @@ devServer: {
 
 ## Cleaning Up Hash Files
 
-```js
+- prevent double bundle.js file in dist folder
 
+> <i>webpack.config.js</i>
+
+```js
+output: {
+  path: path.resolve(__dirname, "dist"),
+  filename: "[name][contenthash].js",
+  clean: true,
+},
 ```
 
 <br/>
 
 ## Source Maps
 
-```js
+- debug
 
+> <i>webpack.config.js</i>
+
+```js
+devServer: {
+  // ...
+},
+devtool: "source-map",
 ```
 
 <br/>

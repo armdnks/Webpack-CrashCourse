@@ -9,6 +9,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "[name][contenthash].js",
+    clean: true,
   },
   devServer: {
     static: {
@@ -20,6 +21,7 @@ module.exports = {
     compress: true,
     historyApiFallback: true,
   },
+  devtool: "source-map",
   module: {
     rules: [
       {

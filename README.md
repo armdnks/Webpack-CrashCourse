@@ -614,9 +614,13 @@ _root
         └── laughing.svg
 ```
 
+> <i>index.js</i>
+
 ```js
 import laughing from "./assets/laughing.svg";
 ```
+
+> <i>webpack.config.js</i>
 
 ```js
 module.exports = {
@@ -646,14 +650,65 @@ npm run build
 
 ## Finish The Joke App
 
-```js
-
+```bash
+npm i axios
 ```
+
+> <i>generate-joke.js</i>
+
+```js
+import axios from "axios";
+
+export default function generateJoke() {
+  const config = {
+    headers: {
+      Accept: "application/json",
+    },
+  };
+
+  axios.get("https://icanhazdadjoke.com", config).then((res) => {
+    document.getElementById("joke").innerHTML = res.data.joke;
+  });
+}
+```
+
+- button functionality
+
+> <i>index.js</i>
+
+```js
+import generateJoke from "./generate-joke";
+
+const jokeBtn = document.getElementById("joke-btn");
+jokeBtn.addEventListener("click", generateJoke);
+```
+
+![](./_preview/15-finish-joke-app.jpg)
 
 <br/>
 
 ## Webpack Bundle Analyzer
 
-```js
+### Install Package
 
+```bash
+npm i -D webpack-bundle-analyzer
 ```
+
+> <i>webpack.config.js</i>
+
+```js
+const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
+plugins: [
+  // ...
+  new BundleAnalyzerPlugin(),
+],
+```
+
+```bash
+npm run build
+```
+
+![](./_preview/16-webpack-analyzer.jpg)
+
+> http://127.0.0.1:8888/

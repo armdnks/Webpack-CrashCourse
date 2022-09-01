@@ -574,8 +574,33 @@ devtool: "source-map",
 
 ## Babel Loader
 
-```js
+### Install Packages
 
+```bash
+npm i -D babel-loader @babel/core @babel/preset-env
+```
+
+> <i>webpack.config.js</i>
+
+```js
+module: {
+  rules: [
+    {
+      test: /\.scss$/,
+      use: ["style-loader", "css-loader", "sass-loader"],
+    },
+    {
+      test: /\.js$/,
+      exclude: /node_modules/,
+      use: {
+        loader: "babel-loader",
+        options: {
+          preset: ["@babel/preset-env"],
+        },
+      },
+    },
+  ],
+},
 ```
 
 <br/>

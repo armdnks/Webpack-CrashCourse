@@ -595,7 +595,7 @@ module: {
       use: {
         loader: "babel-loader",
         options: {
-          preset: ["@babel/preset-env"],
+          presets: ["@babel/preset-env"],
         },
       },
     },
@@ -607,9 +607,40 @@ module: {
 
 ## Asset Resource Loader
 
-```js
-
+```bash
+_root
+└── src
+    └── assets
+        └── laughing.svg
 ```
+
+```js
+import laughing from "./assets/laughing.svg";
+```
+
+```js
+module.exports = {
+  output: {
+    // ...
+    assetModuleFilename: "[name][ext]",
+  },
+  module: {
+    rules: [
+      // ...
+      {
+        test: /.(png|svg|jpg|jpeg|gif)$/i,
+        type: "asset/resource",
+      },
+    ],
+  },
+};
+```
+
+```bash
+npm run build
+```
+
+![](./_preview/14-assets-loader.jpg)
 
 <br/>
 
